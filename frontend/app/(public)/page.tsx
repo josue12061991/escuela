@@ -29,9 +29,7 @@ if(!datos.ok){
       <section id="nosotros" className=" flex flex-col p-8   scroll-mt-16
       relative  gap-2">
         <About/>
-      </section>
-
-      
+      </section>     
 
       
     </>
