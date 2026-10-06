@@ -1,16 +1,27 @@
 import React from "react";
 
+import {
+  SidebarInset,
+  SidebarProvider,
+  
+} from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
+import { Header} from "@/components/app-header"
 export default function DashboadrLayout({children}:{children:React.ReactNode}) {
     
     return (
-    <div className="flex min-h-screen">
-        <aside className="w-64 bg-slate-900 text-white p-4 flex flex-col gap-2">
-            <h2 className="font-bold text-lg mb-6">Panel de gestión</h2>
-            {/* Aquí luego irá el menú dinámico según permisos del usuario */}
-        </aside>
-        <main className="flex-1 p-8">
-            {children}
-        </main>
-    </div>
+    
+    <SidebarProvider >
+        <AppSidebar  />
+        
+        <SidebarInset  className="border-4 border-red-500">
+            <Header/>
+            <main className="flex-1">
+                {children}
+            </main>
+        </SidebarInset>  
+    </SidebarProvider>     
+        
+    
     )
 }
