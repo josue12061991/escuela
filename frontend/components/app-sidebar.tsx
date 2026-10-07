@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
+// import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
 import { TeamSwitcher } from "@/components/team-switcher"
 import {
@@ -13,7 +13,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { GalleryVerticalEndIcon, AudioLinesIcon, TerminalIcon, TerminalSquareIcon, BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon } from "lucide-react"
+import { GalleryVerticalEndIcon, AudioLinesIcon, TerminalIcon, User , BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon } from "lucide-react"
 
 // This is sample data.
 const data = {
@@ -50,74 +50,74 @@ const data = {
   ],
   navMain: [
     {
-      title: "Inicio",
-      url: "/dashboard",
+      title:"Dashboard",
+      url:"/dashboard",
+      icon:(
+        <User/>
+      )
+    },
+    {
+      title: "Personas",
+      url: "/dashboard/Personas",
       icon: (
-        <TerminalSquareIcon
+        <User 
         />
       ),
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Alumnos",
+          url: "/dashboard/Personas/Alumnos",
         },
         {
-          title: "Starred",
-          url: "#",
+          title: "Docentes",
+          url: "/dashboard/Personas/Docentes",
         },
         {
-          title: "Settings",
-          url: "#",
+          title: "Administrativos",
+          url: "/dashboard/Personas/Administrativos",
         },
       ],
     },
     {
-      title: "Matricula",
-      url: "/dashboard/matriculas",
+      title: "Academico",
+      url: "/dashboard/academico",
       icon: (
         <BotIcon
         />
       ),
       items: [
         {
-          title: "Genesis",
+          title: "Año academico",
           url: "#",
         },
         {
-          title: "Explorer",
+          title: "Grados",
           url: "#",
         },
         {
-          title: "Quantum",
+          title: "Secciones",
           url: "#",
         },
       ],
     },
     {
-      title: "Notas",
-      url: "/dashboard/notas",
+      title: "Areas",
+      url: "/dashboard/Cursos",
       icon: (
         <BookOpenIcon
         />
       ),
       items: [
         {
-          title: "Introduction",
+          title: "Cursos",
           url: "#",
-        },
+        },        
         {
-          title: "Get Started",
+          title: "Asignacion de cursos",
           url: "#",
         },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
+        
       ],
     },
     {
@@ -147,32 +147,7 @@ const data = {
       ],
     },
   ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: (
-        <FrameIcon
-        />
-      ),
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: (
-        <PieChartIcon
-        />
-      ),
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: (
-        <MapIcon
-        />
-      ),
-    },
-  ],
+  
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -183,7 +158,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
