@@ -9,7 +9,7 @@ export const WebRuta=({BaseDatos})=>{
 
     ruta.get("/persona",controlador.MostrarPersonas)
     ruta.get("/slider",controlador.MostrarSlider)
-
+    // ruta.post("/",upload.single('urlfoto_persona'),controlador.CrearPersona)
     return ruta
     
 }
