@@ -40,13 +40,13 @@ export function NavMain({ items }: NavMainProps) {
           // --- Sin sub-items: link directo, sin collapsible ---
           if (!item.items?.length) {
             return (
-              <SidebarMenuItem key={item.title}>
+              <SidebarMenuItem key={item.title} >
                 <SidebarMenuButton
                   tooltip={item.title}
                   render={<Link href={item.url} />}
                 >
                   {item.icon}
-                  <span>{item.title}</span>
+                  <span className="font-bold">{item.title}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             )
@@ -64,15 +64,15 @@ export function NavMain({ items }: NavMainProps) {
                 render={<SidebarMenuButton tooltip={item.title} />}
               >
                 {item.icon}
-                <span>{item.title}</span>
+                <span className="font-bold">{item.title}</span>
                 <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-open/collapsible:rotate-90" />
               </CollapsibleTrigger>
               <CollapsibleContent>
-                <SidebarMenuSub>
+                <SidebarMenuSub className="border-l border-linealeft">
                   {item.items?.map((subItem) => (
-                    <SidebarMenuSubItem key={subItem.title}>
+                    <SidebarMenuSubItem key={subItem.title} >
                       <SidebarMenuSubButton render={<Link href={subItem.url} />}>
-                        <span>{subItem.title}</span>
+                        <span className="">{subItem.title}</span>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}
