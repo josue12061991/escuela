@@ -13,7 +13,9 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { GalleryVerticalEndIcon, AudioLinesIcon, TerminalIcon, User , BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon } from "lucide-react"
+import { GalleryVerticalEndIcon,Wallpaper , AudioLinesIcon, TerminalIcon, User , BotIcon, BookOpenIcon, Settings2Icon, FrameIcon, PieChartIcon, MapIcon } from "lucide-react"
+
+
 
 // This is sample data.
 const data = {
@@ -57,13 +59,43 @@ const data = {
       )
     },
     {
+      title:"Web publica",
+      url:"/dashboard/sliders",
+      icon: (
+        <Wallpaper  
+        />
+      ),
+      items: [
+        {
+          title: "Evento",
+          url: "/dashboard/webpublica/eventos",
+        },
+        {
+          title: "Institucion",
+          url: "/dashboard/webpublica/institucion",
+        },
+        {
+          title: "Noticia",
+          url: "/dashboard/webpublica/noticias",
+        },
+        {
+          title: "Slider",
+          url: "/dashboard/webpublica/sliders",
+        },
+        {
+          title: "Testimonio",
+          url: "/dashboard/webpublica/testimonios",
+        },
+      ],
+    },
+    {
       title: "Personas",
       url: "/dashboard/Personas",
       icon: (
         <User 
         />
       ),
-      isActive: true,
+      // isActive: true,  esto permite que al cargar este modulo este abierto
       items: [
         {
           title: "Alumnos",
@@ -152,17 +184,22 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
+    <Sidebar collapsible="icon" {...props} className="border-r-4 border-gray-400/20 ">
+      {/* <SidebarHeader className="border border-black">
         <TeamSwitcher teams={data.teams} />
-      </SidebarHeader>
-      <SidebarContent>
+      </SidebarHeader> */}
+
+
+      
+
+      <SidebarFooter className=" ">
+        <NavUser user={data.user} />
+      </SidebarFooter>
+      <SidebarContent className=" ">
         <NavMain items={data.navMain} />
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
-      <SidebarFooter>
-        <NavUser user={data.user} />
-      </SidebarFooter>
+      
       <SidebarRail />
     </Sidebar>
   )

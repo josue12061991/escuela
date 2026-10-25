@@ -10,7 +10,7 @@ import type {Slider} from "@/types/slider"
 
 
 export  default async function Home() {
-  const datos=await fetch(`${process.env.API_URL}/slider`, {
+  const datos=await fetch(`${process.env.NEXT_PUBLIC_API_URL}/slider`, {
   cache: "no-store",
 })
 if(!datos.ok){
