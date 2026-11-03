@@ -14,9 +14,11 @@ export default function DashboadrLayout({children}:{children:React.ReactNode}) {
     <SidebarProvider  className="">
         <AppSidebar  />
         
-        <SidebarInset  className="bg-fondosidebarinset text-textosidebarcontent px-2 border border-white">
+        {/* <SidebarInset  className="bg-fondosidebarinset text-textosidebarcontent p-2 border border-white"> */}
+        <SidebarInset  className="bg-fondofondosidebar  p-2 ">
+
             <Header/>
-            <main className="flex-1 border border-white">
+            <main className="flex-1 ">
                 {children}
             </main>
         </SidebarInset>  

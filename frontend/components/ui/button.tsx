@@ -7,7 +7,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        hoverdelete:"border-muted-foreground bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-destructive  dark:hover:bg-destructive/20",
+
         default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        nextprev:
+          "border border-black  dark:border-white text-black dark:text-white bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground  dark:bg-sidebar-primary dark:hover:bg-sidebar-primary/50",
         outline:
           "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:
