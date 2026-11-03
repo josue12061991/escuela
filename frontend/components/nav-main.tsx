@@ -46,7 +46,7 @@ export function NavMain({ items }: NavMainProps) {
                   render={<Link href={item.url} />}
                 >
                   {item.icon}
-                  <span className="font-bold">{item.title}</span>
+                  <span className="font-bold ">{item.title}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             )
@@ -72,7 +72,7 @@ export function NavMain({ items }: NavMainProps) {
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title} >
                       <SidebarMenuSubButton render={<Link href={subItem.url} />}>
-                        <span className="">{subItem.title}</span>
+                        <span className="text-letras font-light">{subItem.title}</span>
                       </SidebarMenuSubButton>
                     </SidebarMenuSubItem>
                   ))}

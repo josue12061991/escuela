@@ -1,7 +1,8 @@
 import sharp from "sharp"
 import { randomUUID } from "crypto"
-import { PersonaModel } from "../modelo/persona.modelo.js"
 import { supabase } from "../database/supabase.js"
+import { PersonaModel } from "../modelo/persona.modelo.js"
+
 import {ValidarRegistroPersona} from "../validator/persona.validator.js"
 
 const BUCKET = "fotos"

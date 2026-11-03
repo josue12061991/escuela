@@ -78,10 +78,70 @@ const EsquemaValidadorUsuario=z.object({
 })
 
 
+
+/*ESQUEMA VALIDADOR DE SLIDER*/
+const EsquemaValidadorSlider=z.object({
+    titulo_slider:z.string()
+        .trim()
+        .min(5,"El titulo debe tener por lo menos 5 caracteres")
+        .regex(/^[\p{L}\s]+$/u, "El titulo solo debe tener letras") // en vez de [a-zA-Záé...]
+        .transform((v) => 
+            v.replace(/\s+/g, " ")
+            .toLowerCase()
+            .replace(/^\p{L}/u, (l) => l.toUpperCase())),
+
+    descripcion_slider:z.string()
+        .trim()
+        .min(10,"La descripcion debe tener por lo menos 10 caracteres")
+        .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,"La descripcion no debe tener caracteres especiales")
+        .transform((valor) =>valor
+            .toLowerCase()
+            .replace(/^\p{L}/u, (l) => l.toUpperCase())),
+
+    textoboton_slider:z.string()
+        .trim()
+        .min(5,"El texto del boton debe tener por lo menos 5 caracteres")
+        .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,"El texto del boton no debe tener caracteres especiales")
+        .transform((valor) =>valor
+            .toLowerCase()
+            .replace(/^\p{L}/u, (l) => l.toUpperCase())),
+
+    orden_slider: z.coerce.number("El orden debe ser un número")
+    .int("El orden debe ser un número entero")
+    .min(1, "El orden debe ser 1 o mayor"),
+
+
+    urldestino_slider: z.string()
+    .trim()
+    .max(255, "El enlace no debe superar 255 caracteres")
+    .refine(
+        (v) => v === "" || /^(\/(?!\/)\S*|#\S+|https?:\/\/\S+)$/.test(v),
+        "Usa una ruta (/matriculas), un ancla (#nosotros) o una URL (https://...)"
+    )
+    .transform((v) => (v === "" ? null : v)),
+
+    estado_slider: z.enum(["ACTIVO", "INACTIVO"], "El estado debe ser ACTIVO o INACTIVO")
+    .default("ACTIVO"),
+
+    fechainicio_slider: z.preprocess(
+    (v) => (v === "" || v == null ? null : v),
+    z.iso.date("La fecha debe tener el formato AAAA-MM-DD y ser una fecha real").nullable()),
+
+    fechafin_slider: z.preprocess(
+    (v) => (v === "" || v == null ? null : v),
+    z.iso.date("La fecha final debe tener el formato AAAA-MM-DD y ser una fecha real").nullable()),
+    
+})
+
+
 export const ValidarRegistroPersona=(persona)=>{
     return EsquemaValidadorPersona.safeParse(persona)
 }
 
 export const ValidarRegistroUsuario=(usuario)=>{
     return EsquemaValidadorUsuario.safeParse(usuario)
+}
+
+export const ValidarRegistroSlider=(slider)=>{
+    return EsquemaValidadorSlider.safeParse(slider)
 }

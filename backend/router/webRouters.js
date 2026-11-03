@@ -1,14 +1,14 @@
 import { Router } from "express";
-import {WebController} from "../contoller/web.js";
+import {WebpublicaControlador} from "../contoller/webpublica.controler.js";
 
 
 export const WebRuta=({BaseDatos})=>{
 
     const ruta=Router()    
-    const controlador=new WebController({BaseDatos})
+    const controlador=new WebpublicaControlador({BaseDatos})
 
-    ruta.get("/persona",controlador.MostrarPersonas)
-    ruta.get("/slider",controlador.MostrarSlider)
+    // ruta.get("/persona",controlador.MostrarPersonas)
+    ruta.get("/slider",controlador.MostrarSliders)
     // ruta.post("/",upload.single('urlfoto_persona'),controlador.CrearPersona)
     return ruta
     
